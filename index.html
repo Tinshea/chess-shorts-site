@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chess Shorts Publisher</title>
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <img src="icon.png" alt="Chess Shorts icon">
+    <h1>Chess Shorts Publisher</h1>
+  </header>
+
+  <p><strong>Chess Shorts Publisher</strong> is a personal, self-hosted tool that
+  publishes original chess puzzle videos to the creator's own TikTok account,
+  once a day.</p>
+
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><strong>Render.</strong> Every night, the creator's own software renders a
+    vertical video showing three chess puzzles of increasing difficulty. Pieces,
+    board and audio are all drawn and synthesized by the software itself; the
+    puzzles come from the open Lichess puzzle database (CC0).</li>
+    <li><strong>Caption.</strong> A caption is written for the video by a language
+    model running on the creator's own hardware.</li>
+    <li><strong>Connect.</strong> The creator connects their TikTok account once,
+    with TikTok Login Kit, and grants permission to post videos.</li>
+    <li><strong>Publish.</strong> Once a day, the video is posted to the creator's
+    account with TikTok's Content Posting API, using the privacy level allowed by
+    TikTok for the account.</li>
+  </ol>
+
+  <h2>Connect your TikTok account</h2>
+  <p>The tool runs on the creator's home server. This button starts the TikTok
+  authorization from that server.</p>
+  <a class="button" href="http://192.168.1.14:5678/webhook/tiktok-connect">Connect TikTok account</a>
+  <p class="note">Only reachable from the creator's home network.</p>
+
+  <h2>Who can use it</h2>
+  <p>This tool is used by a single creator to publish to their own account. It
+  does not offer accounts, does not collect data from other TikTok users, and
+  does not read, like, comment on or follow other accounts.</p>
+
+  <footer>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </footer>
+</main>
+</body>
+</html>

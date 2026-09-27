@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connecting… — Chess Shorts Publisher</title>
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <img src="icon.png" alt="Chess Shorts icon">
+    <h1>Connecting your TikTok account…</h1>
+  </header>
+  <p id="message">Handing the authorization over to the creator's home server.</p>
+  <p class="note">If nothing happens, make sure you are on the creator's home network.</p>
+</main>
+<script>
+  // TikTok redirige ici (seule adresse HTTPS publique enregistrée), avec
+  // ?code=…&state=… ou ?error=…. On passe ces paramètres tels quels au serveur
+  // de la maison, qui échange le code contre un jeton : le secret de l'app n'est
+  // jamais dans cette page. Le code seul est à usage unique et inutilisable sans
+  // ce secret.
+  const params = new URLSearchParams(location.search);
+  if (params.has("error")) {
+    document.querySelector("h1").textContent = "Authorization was not granted";
+    document.getElementById("message").textContent =
+      params.get("error_description") || params.get("error");
+  } else if (params.has("code") && params.has("state")) {
+    location.replace("http://192.168.1.14:5678/webhook/tiktok-callback" + location.search);
+  } else {
+    document.getElementById("message").textContent = "No authorization code received.";
+  }
+</script>
+</body>
+</html>
